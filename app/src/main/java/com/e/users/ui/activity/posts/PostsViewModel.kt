@@ -16,7 +16,8 @@ import javax.inject.Inject
 @HiltViewModel
 class PostsViewModel @Inject constructor(private val getPostsRepo: PostsRepo) :
     ViewModel() {
-    var postViewModel: MutableLiveData<List<PostsPojo>> = MutableLiveData()
+
+    private val postViewModel: MutableLiveData<List<PostsPojo>> = MutableLiveData()
 
     fun getPosts(): MutableLiveData<List<PostsPojo>> {
         getPostsRepo.getPosts().enqueue(object : Callback<List<PostsPojo>> {

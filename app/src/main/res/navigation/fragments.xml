@@ -9,5 +9,5 @@
         android:id="@+id/usersFragment"
         android:name="com.e.users.ui.activity.users.UsersFragment"
         android:label="users_fragment"
-        tools:layout="@layout/users_fragment" />
+        tools:layout="@layout/fragment_users" />
 </navigation>

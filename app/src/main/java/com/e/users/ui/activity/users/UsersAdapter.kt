@@ -13,7 +13,7 @@ import com.e.users.databinding.ItemUserBinding
 class UsersAdapter() :
     RecyclerView.Adapter<UsersAdapter.UsersViewHolder>() {
 
-    private var usersList: List<UsersPojo> = TODO()
+    private lateinit var usersList: List<UsersPojo>
 
     fun setData(setUsersData: List<UsersPojo>) {
         this.usersList = setUsersData
