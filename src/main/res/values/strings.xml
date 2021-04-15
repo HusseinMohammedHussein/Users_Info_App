@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">UsersKotlin</string>
+    <string name="main_activity_title">My Main Activity</string>
+</resources>
