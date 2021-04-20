@@ -1,4 +1,4 @@
-package com.e.users.ui.activity.posts
+package com.e.users.ui.fragments.posts
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,16 +12,24 @@ import com.e.users.databinding.ItemPostBinding
 
 class PostsAdapter() : RecyclerView.Adapter<PostsAdapter.PostViewHolder>() {
     private lateinit var pojos: List<PostsPojo>
+    lateinit var onItemClick: ((PostsPojo) -> Unit)
 
-     fun setData(pojos: List<PostsPojo>) {
+    fun setData(pojos: List<PostsPojo>) {
         pojos.also { this.pojos = it }
     }
 
-    inner class PostViewHolder(var binding: ItemPostBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class PostViewHolder(var binding: ItemPostBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(pojo: PostsPojo) {
             binding.tvTitle.text = pojo.title
             binding.tvBody.text = pojo.body
+        }
+
+        init {
+            itemView.setOnClickListener {
+                onItemClick.invoke(pojos[adapterPosition])
+            }
         }
     }
 

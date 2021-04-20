@@ -2,8 +2,6 @@ package com.e.users.data.pojos
 
 import com.squareup.moshi.Json
 
-//import com.google.gson.annotations.SerializedName
-
 /**
  * Created by Hussein on 4/10/2021
  */

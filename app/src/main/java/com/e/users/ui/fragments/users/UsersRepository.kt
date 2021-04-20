@@ -1,6 +1,6 @@
-package com.e.users.ui.activity.posts
+package com.e.users.ui.fragments.users
 
-import com.e.users.data.pojos.PostsPojo
+import com.e.users.data.pojos.UsersPojo
 import com.e.users.data.remote.module.ApiModule
 import com.e.users.data.service.ApiService
 import dagger.Module
@@ -12,19 +12,19 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
- * Created by Hussein on 4/10/2021
+ * Created by Hussein on 4/15/2021
  */
 
 @Module
 @InstallIn(ActivityComponent::class)
-class PostsRepo @Inject constructor() {
-    private lateinit var apiService: ApiService
+class UsersRepository @Inject constructor() {
+        private lateinit var usersService: ApiService
 
     @Provides
     @Singleton
-    fun getPosts(): Call<List<PostsPojo>> {
-        apiService = ApiModule.getRetrofit()
-            .create(ApiService::class.java)
-        return apiService.getPosts()
+    fun getUsers(): Call<List<UsersPojo>> {
+        usersService = ApiModule.getRetrofit().create(ApiService::class.java)
+        return usersService.getUsers()
     }
+
 }

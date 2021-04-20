@@ -1,4 +1,4 @@
-package com.e.users.ui.activity.posts
+package com.e.users.ui.fragments.posts
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,9 +14,9 @@ import javax.inject.Inject
  * Created by Hussein on 4/10/2021
  */
 @HiltViewModel
-class PostsViewModel @Inject constructor(private val getPostsRepo: PostsRepo) :
+class PostsViewModel @Inject constructor() :
     ViewModel() {
-
+    private val getPostsRepo = PostsRepo()
     private val postViewModel: MutableLiveData<List<PostsPojo>> = MutableLiveData()
 
     fun getPosts(): MutableLiveData<List<PostsPojo>> {

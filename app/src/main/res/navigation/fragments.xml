@@ -7,7 +7,18 @@
 
     <fragment
         android:id="@+id/usersFragment"
-        android:name="com.e.users.ui.activity.users.UsersFragment"
+        android:name="com.e.users.ui.fragments.users.UsersFragment"
         android:label="users_fragment"
         tools:layout="@layout/fragment_users" />
+
+    <fragment
+        android:id="@+id/postsFragment"
+        android:name="com.e.users.ui.fragments.users.UsersFragment"
+        android:label="users_fragment"
+        tools:layout="@layout/fragment_posts" />
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.e.users.ui.fragments.userProfile.UserProfileFragment"
+        android:label="fragment_user_profile"
+        tools:layout="@layout/fragment_user_profile" />
 </navigation>

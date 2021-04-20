@@ -10,9 +10,9 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ToolbarHomeBinding.inflate(layoutInflater)
-        setSupportActionBar(binding.toolbarApp)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//        binding = ToolbarHomeBinding.inflate(layoutInflater)
+//        setSupportActionBar(binding.toolbar)
+//        supportActionBar?.setDisplayShowTitleEnabled(false)
+//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 }

@@ -1,4 +1,4 @@
-package com.e.users.ui.activity.users
+package com.e.users.ui.fragments.users
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

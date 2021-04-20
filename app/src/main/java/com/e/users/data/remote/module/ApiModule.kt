@@ -22,7 +22,7 @@ import javax.inject.Singleton
 object ApiModule {
     private var okHttpClient: OkHttpClient = OkHttpClient()
     private const val BASE_URL: String = "https://jsonplaceholder.typicode.com/"
-    private const val REQUEST_TIMEOUT: Int = 20
+    private const val REQUEST_TIMEOUT: Int = 60
 
     @Provides
     @Singleton
@@ -31,15 +31,12 @@ object ApiModule {
             initOkHttp()
 
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
+            .baseUrl(BASE_URL)
             .client(okHttpClient)
             .build()
     }
 
-//    @Provides
-//    @Singleton
-//    @ActivityScoped
     private fun initOkHttp() {
         val httpLoggingInterceptor =
             HttpLoggingInterceptor { message -> Timber.i("PostsData:::%s", message) }

@@ -16,7 +16,7 @@
         android:theme="@style/Theme.UsersKotlin"
         tools:ignore="Instantiatable">
 <!--        <activity android:name=".ui.base.BaseActivity"/>-->
-        <activity android:name=".ui.activity.posts.MainActivity">
+        <activity android:name=".ui.activity.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,10 +1,12 @@
-package com.e.users.ui.activity.users
+package com.e.users.ui.fragments.users
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.e.users.R
 import com.e.users.data.pojos.UsersPojo
 import com.e.users.databinding.ItemUserBinding
+import com.squareup.picasso.Picasso
 
 /**
  * Created by Hussein on 4/15/2021
@@ -14,6 +16,7 @@ class UsersAdapter() :
     RecyclerView.Adapter<UsersAdapter.UsersViewHolder>() {
 
     private lateinit var usersList: List<UsersPojo>
+    var onItemClick: ((UsersPojo) -> Unit)? = null
 
     fun setData(setUsersData: List<UsersPojo>) {
         this.usersList = setUsersData
@@ -24,10 +27,19 @@ class UsersAdapter() :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(usersPojo: UsersPojo) {
-            binding.tvName.text = usersPojo.name
             binding.tvUsername.text = usersPojo.username
             binding.tvEmail.text = usersPojo.email
 
+            Picasso.get()
+                .load(R.drawable.ic_man)
+                .placeholder(R.drawable.ic_man)
+                .into(binding.imgUser)
+        }
+
+        init {
+            itemView.setOnClickListener {
+                onItemClick?.invoke(usersList[adapterPosition])
+            }
         }
     }
 
