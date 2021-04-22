@@ -10,7 +10,7 @@ import com.e.users.databinding.ItemPostBinding
  * Created by Hussein on 4/10/2021
  */
 
-class PostsAdapter() : RecyclerView.Adapter<PostsAdapter.PostViewHolder>() {
+class PostsAdapter : RecyclerView.Adapter<PostsAdapter.PostViewHolder>() {
     private lateinit var pojos: List<PostsPojo>
     lateinit var onItemClick: ((PostsPojo) -> Unit)
 

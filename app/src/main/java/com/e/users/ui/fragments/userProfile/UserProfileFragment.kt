@@ -101,11 +101,11 @@ class UserProfileFragment @Inject constructor() : Fragment() {
 
         binding.content.btnInfo.setOnClickListener {
             setupBottomSheet()
-            //            if (behavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
-//                behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-//            } else {
-//                behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-//            }
+            // if (behavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
+            // behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+            // } else {
+            // behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+            // }
         }
 
     }

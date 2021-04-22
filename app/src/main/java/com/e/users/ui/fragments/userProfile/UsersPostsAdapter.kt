@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.e.users.data.pojos.PostsPojo
 import com.e.users.databinding.ItemPostBinding
 
-class UsersPostsAdapter() : RecyclerView.Adapter<UsersPostsAdapter.UsersPostsViewHolder>() {
+class UsersPostsAdapter : RecyclerView.Adapter<UsersPostsAdapter.UsersPostsViewHolder>() {
 
     private lateinit var pojoList: List<PostsPojo>
     lateinit var onItemClick: ((PostsPojo) -> Unit)

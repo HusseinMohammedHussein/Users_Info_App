@@ -14,8 +14,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import javax.inject.Inject
 
-//@AndroidEntryPoint
-class InfoBottomSheetFragment : BottomSheetDialogFragment() {
+@AndroidEntryPoint
+class InfoBottomSheetFragment @Inject constructor() : BottomSheetDialogFragment() {
     private var viewModel: InfoBottomSheetViewModel = InfoBottomSheetViewModel()
     private lateinit var binding: FragmentInfoBottomSheetBinding
     private var getUserId: Int = 0
@@ -26,7 +26,6 @@ class InfoBottomSheetFragment : BottomSheetDialogFragment() {
         fun newInstance() = InfoBottomSheetFragment()
         const val TAG = "Info_Bottom_Sheet"
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,7 +39,6 @@ class InfoBottomSheetFragment : BottomSheetDialogFragment() {
     private fun init() {
         sharedPref = SharedPref(this.requireContext())
         getUserId = sharedPref.getInt("userId")
-        binding.llInfo.setBackgroundResource(R.drawable.bg_bottom)
         viewModel.getUserInfo(getUserId).observe(this.requireActivity(), {
             Timber.d("UserID::%s", getUserId)
             userPojo = UsersPojo(
@@ -51,9 +49,13 @@ class InfoBottomSheetFragment : BottomSheetDialogFragment() {
                 phone = it.phone
             )
             binding.tvName.text = userPojo.name
+            Timber.d("tvName::%s", binding.tvName.text.toString())
             binding.tvUsername.text = userPojo.username
+            Timber.d("tvUsername::%s", binding.tvUsername.text.toString())
             binding.tvEmail.text = userPojo.email
+            Timber.d("tvEmail::%s", binding.tvEmail.text.toString())
             binding.tvPhone.text = userPojo.phone
+            Timber.d("tvPhone::%s", binding.tvPhone.text.toString())
         })
     }
 

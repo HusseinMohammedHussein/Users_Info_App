@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.e.users.data.pojos.TodoPojo
 import com.e.users.databinding.ItemTodoBinding
 
-class TODOsAdapter() : RecyclerView.Adapter<TODOsAdapter.TODOsViewHolder>() {
+class TODOsAdapter : RecyclerView.Adapter<TODOsAdapter.TODOsViewHolder>() {
 
     private lateinit var pojoList: List<TodoPojo>
 //    lateinit var onItemClick: ((TodoPojo) -> Unit)

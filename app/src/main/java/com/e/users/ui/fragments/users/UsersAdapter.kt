@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso
  * Created by Hussein on 4/15/2021
  */
 
-class UsersAdapter() :
+class UsersAdapter :
     RecyclerView.Adapter<UsersAdapter.UsersViewHolder>() {
 
     private lateinit var usersList: List<UsersPojo>
@@ -29,11 +29,6 @@ class UsersAdapter() :
         fun bind(usersPojo: UsersPojo) {
             binding.tvUsername.text = usersPojo.username
             binding.tvEmail.text = usersPojo.email
-
-            Picasso.get()
-                .load(R.drawable.ic_man)
-                .placeholder(R.drawable.ic_man)
-                .into(binding.imgUser)
         }
 
         init {

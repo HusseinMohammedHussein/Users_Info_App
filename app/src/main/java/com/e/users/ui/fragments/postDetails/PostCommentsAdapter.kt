@@ -8,7 +8,7 @@ import com.e.users.data.pojos.PostCommentsPojo
 import com.e.users.databinding.ItemCommentBinding
 import com.squareup.picasso.Picasso
 
-class PostCommentsAdapter() : RecyclerView.Adapter<PostCommentsAdapter.PostCommentsViewHolder>() {
+class PostCommentsAdapter : RecyclerView.Adapter<PostCommentsAdapter.PostCommentsViewHolder>() {
 
     private lateinit var pojoList: List<PostCommentsPojo>
 //    lateinit var onItemClick: ((PostCommentsPojo) -> Unit)
@@ -25,11 +25,6 @@ class PostCommentsAdapter() : RecyclerView.Adapter<PostCommentsAdapter.PostComme
             binding.tvComUsername.text = pojo.name
             binding.tvComEmail.text = pojo.email
             binding.tvComBody.text = pojo.body
-
-            Picasso.get()
-                .load(R.drawable.ic_man)
-                .placeholder(R.drawable.ic_man)
-                .into(binding.imgComUser)
         }
     }
 
