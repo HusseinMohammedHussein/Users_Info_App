@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.e.users.R
 import com.e.users.databinding.FragmentTodosBinding
-import com.e.users.ui.activity.main.MainActivity
+import com.e.users.ui.main.MainActivity
 import com.e.users.utils.SharedPref
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -46,7 +46,6 @@ class TODOsFragment @Inject constructor() : Fragment() {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
         }
-
     }
 
     private fun setupToolbar() {

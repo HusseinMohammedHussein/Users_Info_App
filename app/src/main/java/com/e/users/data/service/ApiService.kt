@@ -28,4 +28,7 @@ interface ApiService {
 
     @GET("user/{id}/todos")
     fun getTodos(@Path("id") userId: Int): Call<List<TodoPojo>>
+
+    @GET("users/{id}")
+    fun getUserInfo(@Path("id") userId: Int): Call<UsersPojo>
 }

@@ -4,31 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
     tools:showIn="@layout/fragment_posts">
+
+    <View
+        android:id="@+id/v_posts"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#A3A3A3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
         android:paddingEnd="20dp"
         android:textColor="@color/black"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constrainedHeight="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Post Title"
-        tools:ignore="RtlSymmetry" />
+        app:layout_constraintTop_toBottomOf="@id/v_posts"
+        tools:ignore="RtlSymmetry"
+        tools:text="Post Title" />
 
     <TextView
         android:id="@+id/tv_body"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:paddingEnd="20dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:padding="15dp"
         android:textColor="@color/black"
+        android:background="@drawable/bg_post"
         android:textSize="15sp"
         app:layout_constrainedHeight="true"
         app:layout_constraintStart_toStartOf="@id/tv_title"

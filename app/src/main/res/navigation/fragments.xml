@@ -16,6 +16,7 @@
         android:name="com.e.users.ui.fragments.users.UsersFragment"
         android:label="users_fragment"
         tools:layout="@layout/fragment_posts" />
+
     <fragment
         android:id="@+id/userProfileFragment"
         android:name="com.e.users.ui.fragments.userProfile.UserProfileFragment"

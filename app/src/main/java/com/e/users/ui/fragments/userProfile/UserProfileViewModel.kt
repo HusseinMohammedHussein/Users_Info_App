@@ -3,6 +3,7 @@ package com.e.users.ui.fragments.userProfile
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.e.users.data.pojos.PostsPojo
+import com.e.users.data.pojos.UsersPojo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Call
 import retrofit2.Callback
@@ -32,4 +33,5 @@ class UserProfileViewModel @Inject constructor() : ViewModel() {
         })
         return getUserPostsMutable
     }
+
 }

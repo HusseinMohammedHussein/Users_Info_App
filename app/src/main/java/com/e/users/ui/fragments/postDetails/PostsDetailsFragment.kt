@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.e.users.R
 import com.e.users.databinding.FragmentPostsDetailsBinding
-import com.e.users.ui.activity.main.MainActivity
+import com.e.users.ui.main.MainActivity
 import com.e.users.utils.SharedPref
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber

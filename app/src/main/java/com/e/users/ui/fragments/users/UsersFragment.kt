@@ -1,5 +1,6 @@
 package com.e.users.ui.fragments.users
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.e.users.databinding.FragmentUsersBinding
-import com.e.users.ui.activity.main.MainActivity
 import com.e.users.ui.fragments.userProfile.UserProfileFragment
+import com.e.users.ui.main.MainActivity
 import com.e.users.utils.SharedPref
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -37,6 +38,7 @@ class UsersFragment @Inject constructor() : Fragment() {
         setupAdapter()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setupToolbar() {
         (activity as MainActivity).setSupportActionBar(mBinding.appbar.toolbar)
         (activity as MainActivity).supportActionBar?.setDisplayShowTitleEnabled(false)
@@ -63,7 +65,6 @@ class UsersFragment @Inject constructor() : Fragment() {
     }
 
     private fun setupAdapter() {
-        val TAG: String = this.tag.toString()
         usersAdapter.onItemClick = {
             (activity as MainActivity).startFragment(UserProfileFragment())
             sharedPref.setString("username", it.username)

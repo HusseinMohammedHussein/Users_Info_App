@@ -24,6 +24,7 @@ class UsersViewModel @Inject constructor() :
             ) {
                 if (response.isSuccessful && response.body() != null) run {
                     getUsersMutableLiveData.value = response.body()
+                    Timber.d("UsersFailure::%s", response.body().toString())
                 }
             }
 

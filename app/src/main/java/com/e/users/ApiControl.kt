@@ -9,6 +9,7 @@ import timber.log.Timber.DebugTree
 /**
  * Created by Hussein on 4/10/2021
  */
+
 @HiltAndroidApp
 class ApiControl : Application() {
     var debugTree = DebugTree()

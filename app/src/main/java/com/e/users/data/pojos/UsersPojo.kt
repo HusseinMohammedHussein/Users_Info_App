@@ -5,6 +5,7 @@ import com.squareup.moshi.Json
 /**
  * Created by Hussein on 4/15/2021
  */
+
 data class UsersPojo(
     @field:Json(name = "id")
     val id: Int,
@@ -12,6 +13,8 @@ data class UsersPojo(
     val name: String,
     @field:Json(name = "username")
     val username: String,
+    @field:Json(name = "phone")
+    val phone: String,
     @field:Json(name = "email")
     val email: String
 )

@@ -1,4 +1,4 @@
-package com.e.users.ui.activity.main
+package com.e.users.ui.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -17,14 +17,6 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
-        init()
-    }
-
-    private fun init() {
-        supportFragmentManager.commit {
-            replace(R.id.nav_host, UsersFragment())
-            addToBackStack(null)
-        }
     }
 
     fun startFragment(fragment: Fragment) {
