@@ -1,16 +1,16 @@
 package com.e.users.ui.main
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.e.users.R
 import com.e.users.databinding.ActivityMainBinding
-import com.e.users.ui.base.BaseActivity
-import com.e.users.ui.fragments.users.UsersFragment
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity() {
+class MainActivity @Inject constructor() : AppCompatActivity() {
     private lateinit var mBinding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

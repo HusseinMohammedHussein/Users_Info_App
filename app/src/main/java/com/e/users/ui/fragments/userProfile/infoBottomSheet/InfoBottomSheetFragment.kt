@@ -32,35 +32,59 @@ class InfoBottomSheetFragment @Inject constructor() : BottomSheetDialogFragment(
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentInfoBottomSheetBinding.inflate(inflater, container, false)
-        init()
         return binding.root
     }
 
     private fun init() {
         sharedPref = SharedPref(this.requireContext())
         getUserId = sharedPref.getInt("userId")
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        methods()
+    }
+
+    private fun methods() {
+        init()
+        getUserInfo()
+    }
+
+    private fun getUserInfo() {
         viewModel.getUserInfo(getUserId).observe(this.requireActivity(), {
             Timber.d("UserID::%s", getUserId)
             userPojo = UsersPojo(
                 id = it.id,
-                name = it.name,
-                username = it.username,
                 email = it.email,
-                phone = it.phone
+                phone = it.phone,
+                website = it.website,
+                address = it.address,
+                company = it.company,
+                username = it.username
             )
-            binding.tvName.text = userPojo.name
-            Timber.d("tvName::%s", binding.tvName.text.toString())
-            binding.tvUsername.text = userPojo.username
-            Timber.d("tvUsername::%s", binding.tvUsername.text.toString())
-            binding.tvEmail.text = userPojo.email
-            Timber.d("tvEmail::%s", binding.tvEmail.text.toString())
-            binding.tvPhone.text = userPojo.phone
-            Timber.d("tvPhone::%s", binding.tvPhone.text.toString())
+            setupViews(userPojo)
         })
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    private fun setupViews(usersPojo: UsersPojo) {
+        binding.tvEmail.text = usersPojo.email
+        Timber.d("tvName::%s", binding.tvEmail.text.toString())
+
+        binding.tvLocation.text = usersPojo.address.city
+        Timber.d("tvUsername::%s", binding.tvLocation.text.toString())
+
+        binding.tvPhone.text = usersPojo.phone
+        Timber.d("tvPhone::%s", binding.tvPhone.text.toString())
+
+        binding.tvWebsite.text = usersPojo.website
+        Timber.d("tvEmail::%s", binding.tvWebsite.text.toString())
+
+        binding.tvCoName.text = usersPojo.company.name
+        Timber.d("tvEmail::%s", binding.tvCoName.text.toString())
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this).get(InfoBottomSheetViewModel::class.java)
         dialog?.window?.attributes?.windowAnimations = R.style.MaterialDialogSheet
     }

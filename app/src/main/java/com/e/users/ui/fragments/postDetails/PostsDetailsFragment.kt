@@ -35,11 +35,14 @@ class PostsDetailsFragment @Inject constructor() : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentPostsDetailsBinding.inflate(inflater, container, false)
-        init()
         return binding.root
     }
 
     private fun init() {
+        binding.rvComments.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
+        }
         sharedPref = SharedPref(this.requireContext())
         getPostID = sharedPref.getInt("postId")
         Timber.d("postID::%s", getPostID)
@@ -47,7 +50,17 @@ class PostsDetailsFragment @Inject constructor() : Fragment() {
         Timber.d("postTitle::%s", getPostTitle)
         getPostBody = sharedPref.getString("postBody")
         Timber.d("postBody::%s", getPostBody)
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        methods()
+    }
+
+    private fun methods() {
         setupToolbar()
+        init()
         getPostComments()
         setupView()
     }
@@ -61,15 +74,6 @@ class PostsDetailsFragment @Inject constructor() : Fragment() {
         binding.appbar.toolbar.setNavigationOnClickListener { (activity as MainActivity).supportFragmentManager.popBackStackImmediate() }
     }
 
-    private fun setupView() {
-        binding.tvTitle.text = getPostTitle
-        binding.tvBody.text = getPostBody
-        binding.rvComments.run {
-            setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
-        }
-    }
-
     private fun getPostComments() {
         viewModel.getPostsComments(getPostID).observe(this.requireActivity(), {
             postCommentsAdapter.setData(it)
@@ -78,8 +82,13 @@ class PostsDetailsFragment @Inject constructor() : Fragment() {
         })
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    private fun setupView() {
+        binding.tvTitle.text = getPostTitle
+        binding.tvBody.text = getPostBody
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this).get(PostsDetailsViewModel::class.java)
     }
 }

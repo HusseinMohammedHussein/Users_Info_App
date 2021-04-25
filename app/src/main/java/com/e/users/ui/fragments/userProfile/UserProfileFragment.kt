@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +15,6 @@ import com.e.users.ui.fragments.todos.TODOsFragment
 import com.e.users.ui.fragments.userProfile.infoBottomSheet.InfoBottomSheetFragment
 import com.e.users.ui.main.MainActivity
 import com.e.users.utils.SharedPref
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import javax.inject.Inject
@@ -29,8 +27,8 @@ class UserProfileFragment @Inject constructor() : Fragment() {
     private lateinit var sharedPref: SharedPref
 
     // Bottom_Sheet
-    private lateinit var behavior: BottomSheetBehavior<LinearLayout>
-//    private lateinit var coordinatorLayout: CoordinatorLayout
+    // private lateinit var behavior: BottomSheetBehavior<LinearLayout>
+    // private lateinit var coordinatorLayout: CoordinatorLayout
     // End
 
     private var getUsername: String? = null
@@ -42,43 +40,40 @@ class UserProfileFragment @Inject constructor() : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentUserProfileBinding.inflate(inflater, container, false)
-        init()
         return binding.root
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(this).get(UserProfileViewModel::class.java)
+    }
+
     private fun init() {
-        setupToolbar()
         sharedPref = SharedPref(this.requireContext())
+        binding.content.rvPosts.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
+        }
+
         getUsername = sharedPref.getString("username")
         Timber.d("getUsername::%s", getUsername)
         getEmail = sharedPref.getString("email")
         Timber.d("getEmail::%s", getEmail)
         getUserId = sharedPref.getInt("userId")
         Timber.d("getUserId::%s", getUserId)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        methods()
+    }
+
+    private fun methods() {
+        setupToolbar()
+        init()
         setupViews()
         getUserPosts()
-        initRecyclerView()
-    }
-
-    private fun getUserPosts() {
-        viewModel.getUserPosts(getUserId).observe(this.requireActivity(), { it ->
-            postsAdapter.setData(it)
-            binding.content.rvPosts.adapter = postsAdapter
-            postsAdapter.notifyDataSetChanged()
-            postsAdapter.onItemClick = {
-                (activity as MainActivity).startFragment(PostsDetailsFragment())
-                sharedPref.setInt("postId", it.id)
-                sharedPref.setString("postTitle", it.title)
-                sharedPref.setString("postBody", it.body)
-            }
-        })
-    }
-
-    private fun initRecyclerView() {
-        binding.content.rvPosts.run {
-            setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
-        }
+        onItemClick()
     }
 
     @SuppressLint("SetTextI18n")
@@ -107,14 +102,15 @@ class UserProfileFragment @Inject constructor() : Fragment() {
             // behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
             // }
         }
-
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(UserProfileViewModel::class.java)
+    private fun getUserPosts() {
+        viewModel.getUserPosts(getUserId).observe(this.requireActivity(), { it ->
+            postsAdapter.setData(it)
+            binding.content.rvPosts.adapter = postsAdapter
+            postsAdapter.notifyDataSetChanged()
+        })
     }
-
 
     private fun setupBottomSheet() {
 //        behavior = BottomSheetBehavior.from(binding.llBottomsheet)
@@ -125,6 +121,15 @@ class UserProfileFragment @Inject constructor() : Fragment() {
             (activity as MainActivity).supportFragmentManager,
             InfoBottomSheetFragment.TAG
         )
+    }
+
+    private fun onItemClick() {
+        postsAdapter.onItemClick = {
+            (activity as MainActivity).startFragment(PostsDetailsFragment())
+            sharedPref.setInt("postId", it.id)
+            sharedPref.setString("postTitle", it.title)
+            sharedPref.setString("postBody", it.body)
+        }
     }
 
 /*    private fun bottomSheet() {

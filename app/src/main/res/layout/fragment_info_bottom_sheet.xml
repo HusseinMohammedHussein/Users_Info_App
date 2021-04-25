@@ -10,7 +10,6 @@
     tools:context=".ui.fragments.userProfile.infoBottomSheet.InfoBottomSheetFragment"
     tools:ignore="RtlSymmetry">
 
-
     <View
         android:id="@+id/line"
         android:layout_width="80dp"
@@ -19,31 +18,22 @@
         android:background="@drawable/bg_view" />
 
     <TextView
-        android:id="@+id/tv_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textColor="#3A3A3A"
-        android:textSize="17sp"
-        tools:text="Leanne Graham" />
-
-    <TextView
-        android:id="@+id/tv_username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="#3A3A3A"
-        android:textSize="17sp"
-        tools:text="Bret" />
-
-    <TextView
         android:id="@+id/tv_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textColor="#3A3A3A"
         android:textSize="17sp"
-        tools:text="Sincere@april.biz" />
+        tools:text="email" />
+
+    <TextView
+        android:id="@+id/tv_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="#3A3A3A"
+        android:textSize="17sp"
+        tools:text="location" />
 
     <TextView
         android:id="@+id/tv_phone"
@@ -52,6 +42,24 @@
         android:layout_marginTop="10dp"
         android:textColor="#3A3A3A"
         android:textSize="17sp"
-        tools:text="1-770-736-8031 x56442" />
+        tools:text="phone" />
+
+    <TextView
+        android:id="@+id/tv_website"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="#3A3A3A"
+        android:textSize="17sp"
+        tools:text="Website" />
+
+    <TextView
+        android:id="@+id/tv_co_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="#3A3A3A"
+        android:textSize="17sp"
+        tools:text="Company Name" />
 </LinearLayout>
 

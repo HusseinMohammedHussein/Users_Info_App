@@ -1,9 +1,10 @@
 package com.e.users.data.pojos
 
-import com.squareup.moshi.Json
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
 
 data class TodoPojo(
-    @field:Json(name = "id") val id: Int,
-    @field:Json(name = "title") val title: String,
-    @field:Json(name = "completed") val completed: Boolean
+    @SerializedName("id") @Expose val id: Int,
+    @SerializedName("title") @Expose val title: String,
+    @SerializedName("completed") @Expose val completed: Boolean
 )

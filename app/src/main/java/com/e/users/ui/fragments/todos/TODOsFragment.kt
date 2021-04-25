@@ -1,5 +1,6 @@
 package com.e.users.ui.fragments.todos
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,9 +17,9 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class TODOsFragment @Inject constructor() : Fragment() {
-    private var viewModel: TODOsViewModel = TODOsViewModel()
     private lateinit var binding: FragmentTodosBinding
 
+    private var viewModel: TODOsViewModel = TODOsViewModel()
     private val todoAdapter: TODOsAdapter = TODOsAdapter()
     private lateinit var sharedPref: SharedPref
 
@@ -33,21 +34,31 @@ class TODOsFragment @Inject constructor() : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentTodosBinding.inflate(inflater, container, false)
-        init()
         return binding.root
     }
 
     private fun init() {
-        setupToolbar()
         sharedPref = SharedPref(this.requireContext())
-        getUserId = sharedPref.getInt("userId")
-        getTodos()
-        binding.rvTodos.run {
+        binding.rvTodos.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
         }
+
+        getUserId = sharedPref.getInt("userId")
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        methods()
+    }
+
+    private fun methods() {
+        setupToolbar()
+        init ()
+        getTodos()
+    }
+
+    @SuppressLint("SetTextI18n")
     private fun setupToolbar() {
         (activity as MainActivity).setSupportActionBar(binding.appbar.toolbar)
         (activity as MainActivity).supportActionBar?.setDisplayShowTitleEnabled(false)
@@ -65,8 +76,8 @@ class TODOsFragment @Inject constructor() : Fragment() {
         })
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this).get(TODOsViewModel::class.java)
     }
 }

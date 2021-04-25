@@ -1,9 +1,10 @@
 package com.e.users.data.pojos
 
-import com.squareup.moshi.Json
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
 
 data class PostCommentsPojo(
-    @field:Json(name = "name") val name: String,
-    @field:Json(name = "email") val email: String,
-    @field:Json(name = "body") val body: String
+    @SerializedName("name") @Expose val name: String,
+    @SerializedName("email") @Expose val email: String,
+    @SerializedName("body") @Expose val body: String
 )

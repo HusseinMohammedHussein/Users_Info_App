@@ -27,8 +27,26 @@ class UsersFragment @Inject constructor() : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         mBinding = FragmentUsersBinding.inflate(inflater, container, false)
-        methods()
         return mBinding.root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        usersViewModel = ViewModelProvider(this).get(UsersViewModel::class.java)
+    }
+
+    private fun init() {
+        sharedPref = SharedPref(this.requireContext())
+        mBinding.rvUsers.run {
+            setHasFixedSize(true)
+            layoutManager =
+                GridLayoutManager(this.context, 2)
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        methods()
     }
 
     private fun methods() {
@@ -46,19 +64,9 @@ class UsersFragment @Inject constructor() : Fragment() {
         mBinding.appbar.tvTitleApp.text = "Users"
     }
 
-    private fun init() {
-        sharedPref = SharedPref(this.requireContext())
-        mBinding.rvUsers.run {
-            setHasFixedSize(true)
-            layoutManager =
-                GridLayoutManager(this.context, 2)
-        }
-    }
-
     private fun getUsersData() {
         usersViewModel.getUsers().observe(this.requireActivity(), {
             usersAdapter.setData(it)
-            mBinding.rvUsers.adapter = usersAdapter
             mBinding.rvUsers.adapter = usersAdapter
             usersAdapter.notifyDataSetChanged()
         })
@@ -71,10 +79,5 @@ class UsersFragment @Inject constructor() : Fragment() {
             sharedPref.setString("email", it.email)
             sharedPref.setInt("userId", it.id)
         }
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        usersViewModel = ViewModelProvider(this).get(UsersViewModel::class.java)
     }
 }
