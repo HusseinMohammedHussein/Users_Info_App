@@ -1,5 +1,6 @@
 package com.e.users.data.remote.module
 
+import com.e.users.data.service.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -46,5 +47,12 @@ object ApiModule {
             .readTimeout(REQUEST_TIMEOUT.toLong(), TimeUnit.SECONDS)
             .writeTimeout(REQUEST_TIMEOUT.toLong(), TimeUnit.SECONDS)
             .build()
+    }
+
+
+    @Provides
+    @Singleton
+    fun createService(): ApiService {
+        return getRetrofit().create(ApiService::class.java)
     }
 }

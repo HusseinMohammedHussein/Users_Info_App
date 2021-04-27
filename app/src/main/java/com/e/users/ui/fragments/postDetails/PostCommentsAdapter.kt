@@ -8,14 +8,13 @@ import com.e.users.data.pojos.PostCommentsPojo
 import com.e.users.databinding.ItemCommentBinding
 import com.squareup.picasso.Picasso
 
-class PostCommentsAdapter : RecyclerView.Adapter<PostCommentsAdapter.PostCommentsViewHolder>() {
+class PostCommentsAdapter(private var pojoList: List<PostCommentsPojo>) : RecyclerView.Adapter<PostCommentsAdapter.PostCommentsViewHolder>() {
 
-    private lateinit var pojoList: List<PostCommentsPojo>
-//    lateinit var onItemClick: ((PostCommentsPojo) -> Unit)
+    //    lateinit var onItemClick: ((PostCommentsPojo) -> Unit)
 
-    fun setData(pojos: List<PostCommentsPojo>) {
-        pojos.also { this.pojoList = it }
-    }
+//    fun setData(pojos: List<PostCommentsPojo>) {
+//        pojos.also { this.pojoList = it }
+//    }
 
     inner class PostCommentsViewHolder(var binding: ItemCommentBinding) :
         RecyclerView.ViewHolder(binding.root) {

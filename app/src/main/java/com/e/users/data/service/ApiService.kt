@@ -1,9 +1,6 @@
 package com.e.users.data.service
 
-import com.e.users.data.pojos.PostCommentsPojo
-import com.e.users.data.pojos.PostsPojo
-import com.e.users.data.pojos.TodoPojo
-import com.e.users.data.pojos.UsersPojo
+import com.e.users.data.pojos.*
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -31,4 +28,10 @@ interface ApiService {
 
     @GET("users/{id}")
     fun getUserInfo(@Path("id") userId: Int): Call<UsersPojo>
+
+    @GET("users/{id}/albums")
+    fun getUserAlbums(@Path("id") userId: Int): Call<List<AlbumsPojo>>
+
+    @GET("albums/{id}/photos")
+    fun getAlbumPhotos(@Path("id") albumId: Int): Call<List<PhotosPojo>>
 }

@@ -17,49 +17,135 @@
         android:layout_gravity="center"
         android:background="@drawable/bg_view" />
 
-    <TextView
-        android:id="@+id/tv_email"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="#3A3A3A"
-        android:textSize="17sp"
-        tools:text="email" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp">
 
-    <TextView
-        android:id="@+id/tv_location"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textColor="#3A3A3A"
-        android:textSize="17sp"
-        tools:text="location" />
+        <ImageView
+            android:id="@+id/img_album"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_email" />
 
-    <TextView
-        android:id="@+id/tv_phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="#3A3A3A"
-        android:textSize="17sp"
-        tools:text="phone" />
+        <TextView
+            android:id="@+id/tv_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:textColor="#70196D"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:text="email" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_website"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="#3A3A3A"
-        android:textSize="17sp"
-        tools:text="Website" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp">
 
-    <TextView
-        android:id="@+id/tv_co_name"
+        <ImageView
+            android:id="@+id/img_location"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_location" />
+
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:textColor="#70196D"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:text="location" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="#3A3A3A"
-        android:textSize="17sp"
-        tools:text="Company Name" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp">
+
+        <ImageView
+            android:id="@+id/img_phone"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_phone" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:textColor="#70196D"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:text="phone" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp">
+
+        <ImageView
+            android:id="@+id/img_website"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_website" />
+
+        <TextView
+            android:id="@+id/tv_website"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:textColor="#70196D"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:text="Website" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp">
+
+        <ImageView
+            android:id="@+id/img_company"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_company" />
+
+        <TextView
+            android:id="@+id/tv_co_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:textColor="#70196D"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:text="Company Name" />
+    </LinearLayout>
+
+
+
 </LinearLayout>
 

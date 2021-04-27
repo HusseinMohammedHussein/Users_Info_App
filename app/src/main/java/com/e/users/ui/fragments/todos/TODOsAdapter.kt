@@ -19,7 +19,7 @@ class TODOsAdapter : RecyclerView.Adapter<TODOsAdapter.TODOsViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(pojo: TodoPojo) {
-            binding.tvTitle.text = pojo.title
+            binding.checkbox.text = pojo.title
             binding.checkbox.isChecked = pojo.completed
         }
 

@@ -12,8 +12,15 @@ import com.e.users.R
 import com.e.users.databinding.FragmentUserProfileBinding
 import com.e.users.ui.fragments.postDetails.PostsDetailsFragment
 import com.e.users.ui.fragments.todos.TODOsFragment
+import com.e.users.ui.fragments.userProfile.albums.AlbumsBottomSheet
 import com.e.users.ui.fragments.userProfile.infoBottomSheet.InfoBottomSheetFragment
 import com.e.users.ui.main.MainActivity
+import com.e.users.utils.SharedKeys
+import com.e.users.utils.SharedKeys.Companion.EMAIL
+import com.e.users.utils.SharedKeys.Companion.POST_BODY
+import com.e.users.utils.SharedKeys.Companion.POST_ID
+import com.e.users.utils.SharedKeys.Companion.POST_TITLE
+import com.e.users.utils.SharedKeys.Companion.USER_NAME
 import com.e.users.utils.SharedPref
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -55,11 +62,11 @@ class UserProfileFragment @Inject constructor() : Fragment() {
             layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
         }
 
-        getUsername = sharedPref.getString("username")
+        getUsername = sharedPref.getString(USER_NAME)
         Timber.d("getUsername::%s", getUsername)
-        getEmail = sharedPref.getString("email")
+        getEmail = sharedPref.getString(EMAIL)
         Timber.d("getEmail::%s", getEmail)
-        getUserId = sharedPref.getInt("userId")
+        getUserId = sharedPref.getInt(SharedKeys.USER_ID)
         Timber.d("getUserId::%s", getUserId)
     }
 
@@ -95,13 +102,25 @@ class UserProfileFragment @Inject constructor() : Fragment() {
         }
 
         binding.content.btnInfo.setOnClickListener {
-            setupBottomSheet()
+            infoBottomSheet()
             // if (behavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
             // behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
             // } else {
             // behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
             // }
         }
+
+        binding.content.btnAlbums.setOnClickListener {
+            albumsBottomSheet()
+        }
+    }
+
+    private fun albumsBottomSheet() {
+        val albumsBottomSheet = AlbumsBottomSheet.newInstance()
+        albumsBottomSheet.show(
+            (activity as MainActivity).supportFragmentManager,
+            AlbumsBottomSheet.TAG
+        )
     }
 
     private fun getUserPosts() {
@@ -112,7 +131,7 @@ class UserProfileFragment @Inject constructor() : Fragment() {
         })
     }
 
-    private fun setupBottomSheet() {
+    private fun infoBottomSheet() {
 //        behavior = BottomSheetBehavior.from(binding.llBottomsheet)
 //        coordinatorLayout = binding.coordinator
 
@@ -126,9 +145,9 @@ class UserProfileFragment @Inject constructor() : Fragment() {
     private fun onItemClick() {
         postsAdapter.onItemClick = {
             (activity as MainActivity).startFragment(PostsDetailsFragment())
-            sharedPref.setInt("postId", it.id)
-            sharedPref.setString("postTitle", it.title)
-            sharedPref.setString("postBody", it.body)
+            sharedPref.setInt(POST_ID, it.id)
+            sharedPref.setString(POST_TITLE, it.title)
+            sharedPref.setString(POST_BODY, it.body)
         }
     }
 

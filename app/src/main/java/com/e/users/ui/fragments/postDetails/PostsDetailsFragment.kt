@@ -10,6 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.e.users.R
 import com.e.users.databinding.FragmentPostsDetailsBinding
 import com.e.users.ui.main.MainActivity
+import com.e.users.utils.SharedKeys
+import com.e.users.utils.SharedKeys.Companion.POST_BODY
+import com.e.users.utils.SharedKeys.Companion.POST_ID
+import com.e.users.utils.SharedKeys.Companion.POST_TITLE
 import com.e.users.utils.SharedPref
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -21,7 +25,7 @@ class PostsDetailsFragment @Inject constructor() : Fragment() {
     private var viewModel: PostsDetailsViewModel = PostsDetailsViewModel()
 
     private lateinit var sharedPref: SharedPref
-    private var postCommentsAdapter: PostCommentsAdapter = PostCommentsAdapter()
+    private lateinit var postCommentsAdapter: PostCommentsAdapter
     private var getPostID: Int = 0
     private var getPostTitle: String? = null
     private var getPostBody: String? = null
@@ -44,11 +48,11 @@ class PostsDetailsFragment @Inject constructor() : Fragment() {
             layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
         }
         sharedPref = SharedPref(this.requireContext())
-        getPostID = sharedPref.getInt("postId")
+        getPostID = sharedPref.getInt(POST_ID)
         Timber.d("postID::%s", getPostID)
-        getPostTitle = sharedPref.getString("postTitle")
+        getPostTitle = sharedPref.getString(POST_TITLE)
         Timber.d("postTitle::%s", getPostTitle)
-        getPostBody = sharedPref.getString("postBody")
+        getPostBody = sharedPref.getString(POST_BODY)
         Timber.d("postBody::%s", getPostBody)
     }
 
@@ -76,7 +80,7 @@ class PostsDetailsFragment @Inject constructor() : Fragment() {
 
     private fun getPostComments() {
         viewModel.getPostsComments(getPostID).observe(this.requireActivity(), {
-            postCommentsAdapter.setData(it)
+            postCommentsAdapter = PostCommentsAdapter(it)
             binding.rvComments.adapter = postCommentsAdapter
             postCommentsAdapter.notifyDataSetChanged()
         })

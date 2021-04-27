@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.e.users.databinding.FragmentUsersBinding
 import com.e.users.ui.fragments.userProfile.UserProfileFragment
 import com.e.users.ui.main.MainActivity
+import com.e.users.utils.SharedKeys.Companion.EMAIL
+import com.e.users.utils.SharedKeys.Companion.USER_ID
+import com.e.users.utils.SharedKeys.Companion.USER_NAME
 import com.e.users.utils.SharedPref
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -75,9 +78,9 @@ class UsersFragment @Inject constructor() : Fragment() {
     private fun setupAdapter() {
         usersAdapter.onItemClick = {
             (activity as MainActivity).startFragment(UserProfileFragment())
-            sharedPref.setString("username", it.username)
-            sharedPref.setString("email", it.email)
-            sharedPref.setInt("userId", it.id)
+            sharedPref.setString(USER_NAME, it.username)
+            sharedPref.setString(EMAIL, it.email)
+            sharedPref.setInt(USER_ID, it.id)
         }
     }
 }

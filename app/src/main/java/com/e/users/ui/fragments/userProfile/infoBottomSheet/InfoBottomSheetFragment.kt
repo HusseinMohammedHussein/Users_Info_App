@@ -16,11 +16,12 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class InfoBottomSheetFragment @Inject constructor() : BottomSheetDialogFragment() {
-    private var viewModel: InfoBottomSheetViewModel = InfoBottomSheetViewModel()
+
     private lateinit var binding: FragmentInfoBottomSheetBinding
-    private var getUserId: Int = 0
+    private var viewModel: InfoBottomSheetViewModel = InfoBottomSheetViewModel()
     private lateinit var sharedPref: SharedPref
     private lateinit var userPojo: UsersPojo
+    private var getUserId: Int = 0
 
     companion object {
         fun newInstance() = InfoBottomSheetFragment()

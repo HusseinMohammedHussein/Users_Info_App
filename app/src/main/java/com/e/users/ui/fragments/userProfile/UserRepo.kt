@@ -1,5 +1,6 @@
 package com.e.users.ui.fragments.userProfile
 
+import com.e.users.data.pojos.AlbumsPojo
 import com.e.users.data.pojos.PostsPojo
 import com.e.users.data.pojos.UsersPojo
 import com.e.users.data.remote.module.ApiModule
@@ -26,5 +27,11 @@ class UserRepo @Inject constructor() {
     @Singleton
     fun getUserInfo(userId: Int): Call<UsersPojo> {
         return ApiModule.getRetrofit().create(ApiService::class.java).getUserInfo(userId)
+    }
+
+    @Provides
+    @Singleton
+    fun getUserAlbums(userId: Int): Call<List<AlbumsPojo>> {
+        return ApiModule.createService().getUserAlbums(userId)
     }
 }
