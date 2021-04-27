@@ -23,7 +23,7 @@ class PhotosFragment @Inject constructor() : Fragment() {
     private lateinit var binding: FragmentPhotosBinding
     private lateinit var viewModel: PhotosViewModel
     private lateinit var sharedPref: SharedPref
-    private lateinit var photosAdapter: PhotosAdapter
+    private var photosAdapter: PhotosAdapter = PhotosAdapter()
     private var getAlbumId: Int = 0
 
     companion object {
@@ -56,7 +56,7 @@ class PhotosFragment @Inject constructor() : Fragment() {
 
     private fun getAlbumPhotos() {
         viewModel.getAlbumPhotos(getAlbumId).observe(this.requireActivity(), {
-            photosAdapter = PhotosAdapter(it)
+            photosAdapter.setData(it)
             binding.rvPhotos.adapter = photosAdapter
             photosAdapter.notifyDataSetChanged()
         })

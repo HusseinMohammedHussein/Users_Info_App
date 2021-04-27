@@ -7,8 +7,9 @@ import com.e.users.data.pojos.PhotosPojo
 import com.e.users.databinding.ItemPhotoBinding
 import com.squareup.picasso.Picasso
 
-class PhotosAdapter(private var pojoList: List<PhotosPojo>) : RecyclerView.Adapter<PhotosAdapter.PhotosViewHolder>() {
+class PhotosAdapter : RecyclerView.Adapter<PhotosAdapter.PhotosViewHolder>() {
 
+    private lateinit var pojoList: List<PhotosPojo>
     //    lateinit var onItemClick: ((PhotosPojo) -> Unit)
 
     fun setData(pojos: List<PhotosPojo>) {

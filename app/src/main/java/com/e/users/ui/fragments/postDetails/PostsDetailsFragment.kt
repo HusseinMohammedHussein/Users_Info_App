@@ -25,7 +25,7 @@ class PostsDetailsFragment @Inject constructor() : Fragment() {
     private var viewModel: PostsDetailsViewModel = PostsDetailsViewModel()
 
     private lateinit var sharedPref: SharedPref
-    private lateinit var postCommentsAdapter: PostCommentsAdapter
+    private var postCommentsAdapter: PostCommentsAdapter = PostCommentsAdapter()
     private var getPostID: Int = 0
     private var getPostTitle: String? = null
     private var getPostBody: String? = null
@@ -80,7 +80,7 @@ class PostsDetailsFragment @Inject constructor() : Fragment() {
 
     private fun getPostComments() {
         viewModel.getPostsComments(getPostID).observe(this.requireActivity(), {
-            postCommentsAdapter = PostCommentsAdapter(it)
+            postCommentsAdapter.setData(it)
             binding.rvComments.adapter = postCommentsAdapter
             postCommentsAdapter.notifyDataSetChanged()
         })

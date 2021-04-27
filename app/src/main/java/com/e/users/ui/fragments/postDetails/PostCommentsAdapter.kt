@@ -3,18 +3,17 @@ package com.e.users.ui.fragments.postDetails;
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.e.users.R
 import com.e.users.data.pojos.PostCommentsPojo
 import com.e.users.databinding.ItemCommentBinding
-import com.squareup.picasso.Picasso
 
-class PostCommentsAdapter(private var pojoList: List<PostCommentsPojo>) : RecyclerView.Adapter<PostCommentsAdapter.PostCommentsViewHolder>() {
+class PostCommentsAdapter : RecyclerView.Adapter<PostCommentsAdapter.PostCommentsViewHolder>() {
 
+    private lateinit var pojoList: List<PostCommentsPojo>
     //    lateinit var onItemClick: ((PostCommentsPojo) -> Unit)
 
-//    fun setData(pojos: List<PostCommentsPojo>) {
-//        pojos.also { this.pojoList = it }
-//    }
+    fun setData(pojos: List<PostCommentsPojo>) {
+        pojos.also { this.pojoList = it }
+    }
 
     inner class PostCommentsViewHolder(var binding: ItemCommentBinding) :
         RecyclerView.ViewHolder(binding.root) {
