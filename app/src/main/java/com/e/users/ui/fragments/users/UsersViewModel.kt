@@ -13,6 +13,7 @@ import javax.inject.Inject
 @HiltViewModel
 class UsersViewModel @Inject constructor() :
     ViewModel() {
+    
     private val usersRepository = UsersRepository()
     private val getUsersMutableLiveData: MutableLiveData<List<UsersPojo>> = MutableLiveData()
 
@@ -24,7 +25,6 @@ class UsersViewModel @Inject constructor() :
             ) {
                 if (response.isSuccessful && response.body() != null) run {
                     getUsersMutableLiveData.value = response.body()
-                    Timber.d("UsersFailure::%s", response.body().toString())
                 }
             }
 

@@ -15,7 +15,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class InfoBottomSheetFragment @Inject constructor() : BottomSheetDialogFragment() {
+class InfoBottomSheetFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentInfoBottomSheetBinding
     private var viewModel: InfoBottomSheetViewModel = InfoBottomSheetViewModel()

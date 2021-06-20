@@ -39,7 +39,7 @@ object ApiModule {
 
     private fun initOkHttp() {
         val httpLoggingInterceptor =
-            HttpLoggingInterceptor { message -> Timber.i("PostsData:::%s", message) }
+            HttpLoggingInterceptor { message -> Timber.i("PostsData::%s", message) }
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         okHttpClient = OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)

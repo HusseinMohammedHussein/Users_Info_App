@@ -1,7 +1,6 @@
 package com.e.users
 
 import android.app.Application
-import com.e.users.BuildConfig
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 import timber.log.Timber.DebugTree
@@ -11,7 +10,7 @@ import timber.log.Timber.DebugTree
  */
 
 @HiltAndroidApp
-class ApiControl : Application() {
+class UsersApplication : Application() {
     var debugTree = DebugTree()
 
     override fun onCreate() {
