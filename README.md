@@ -1,6 +1,3 @@
-# Users_Info_App
-
-## Review
 https://user-images.githubusercontent.com/22426409/122767342-d9783200-d2a2-11eb-91de-6ef58b421806.mp4
 
 ## Libraries 
@@ -12,3 +9,6 @@ https://user-images.githubusercontent.com/22426409/122767342-d9783200-d2a2-11eb-
   - [__CircleImageView__](https://github.com/hdodenhof/CircleImageView "CircleImageView") => Make Circle Image.
   - [__Picasso__](https://github.com/square/picasso "Picasso") => Loading Images.
 
+## Programming Languge
+  - [ ] __Java__  
+  - [X] __Kotlin__
